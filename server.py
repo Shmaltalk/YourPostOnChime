@@ -40,7 +40,7 @@ def emoji_result():
 
   if (emoji_string):
     tweet_embed = get_tweet_embed(tweet_link)
-    return render_template('GPTOutput.html', tweet_link=tweet_link, tweet_text=tweet_text, media_descrip=media_descrip, GPT_output=emoji_string, tweet_embed=tweet_embed)
+    return render_template('EmojiOutput.html', tweet_link=tweet_link, tweet_text=tweet_text, media_descrip=media_descrip, GPT_output=emoji_string, tweet_embed=tweet_embed)
  
   else:
     GPT_output = get_response(tweet_text, media_descrip)["choices"][0]["text"]
