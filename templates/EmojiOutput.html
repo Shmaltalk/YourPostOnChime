@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400&display=swap" /> 
     <link rel='icon' href='favicon.png' type='image/x-icon'/>
+    <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
     <meta charset="utf-8"/>
     <meta name="author" content="Talie Massachi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,12 @@
           </div>
           <div class="gpt-output">
             <h2>Your tweet in emojis</h2>
-            <p id="emojis">{{GPT_output}}</p>
+            <p id="emojis">{{emoji_string}}</p>
+
+            <div>
+              <h2>Post this to Twitter</h2>
+              <a class="button_t" href="https://twitter.com/intent/tweet?text={{emoji_string}}%0Avia%20%40YourPostOnChime&url={{tweet_link}}">Tweet it!</a>
+            </div>
 
             <form action="/emoji_result" id="resubmit-form" method="get">
               <h2>Don't like your result?</h2>
@@ -65,7 +71,11 @@
 
 
         <div class="bottom-bar">
-
+          Want to see more emojis? Try Chime
+          <div class="chime-links">
+            <a class="download" href='https://apps.apple.com/us/app/chime-social-mood-tracker/id1556182825'><img alt='Get it on the App Store' src='../static/images/app_store.svg'/></a>
+            <a class="download" href='https://play.google.com/store/apps/details?id=com.brown.chime&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='../static/images/google_play.svg'/></a>
+          </div>
         </div>
       </div> <!-- close class="content" -->
     </div> <!-- close class="main-column" -->
