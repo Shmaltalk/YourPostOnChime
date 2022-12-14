@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../static/styles/styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400&display=swap" /> 
+    <link rel='icon' href='favicon.png' type='image/x-icon'/>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Talie Massachi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourPostOnChime</title>
+  </head>
+  <body>
+    <script>0</script>
+    <div class="main-column">
+      <div class="content">
+        <header class="page-heading">
+          <h1 class="title">
+            Your Post On Chime
+          </h1>
+        </header>
+
+        <div>
+          <h2><em>What would this tweet look like in emojis?</em></h2>
+          A question we have all asked ourselves. Well now you can find out! Enter a link to a tweet; 
+          confirm or add a description for any images, videos, or gifs in the tweet; and send it along 
+          to GPT for translation into emoijs.<br>
+        </div>
+
+        <div class="get-tweet">
+          <form action="/get_tweet_info" method="get">
+            <label for="tweet_link">Link to tweet:</label><br>
+            <input type="text" id="tweet_link" name="tweet_link" value={{tweet_link}}><br>
+            <input type="submit" value="Get Tweet Info">
+          </form>
+        </div>
+
+        <div class="tweet-info">
+          <h2>
+            Tweet Text
+          </h2>
+          {{tweet_text}}
+
+          <h2>
+            Tweet Image
+          </h2>
+          <span><em>Please note that at this time we can only show still images, videos and gifs will not be displayed here, but may exist in the original tweet.</em></span><br> 
+          <div class="tweet-imgs">
+            <img class="tweet-media" src="{{tweet_media_0}}">
+            <img class="tweet-media" src="{{tweet_media_1}}">
+            <img class="tweet-media" src="{{tweet_media_2}}">
+            <img class="tweet-media" src="{{tweet_media_3}}">
+          </div>
+        </div>
+
+        <form action="/send_to_GPT" id="descrip-form" method="get">
+          <label for="GPT_data"><h2>Media description:</h2></label>
+          <span><em>Feel free to edit! This currently shows the media alt-text by default.</em></span>
+          <textarea name="media_descrip" form="descrip-form">{{media_descrip}}</textarea> <br>
+          <input type="hidden" name="tweet_link" value="{{tweet_link}}">
+          <input type="hidden" name="tweet_text" value="{{tweet_text}}">
+          <input type="submit" value="Submit to ChatGPT">
+        </form>
+
+
+        <div class="bottom-bar">
+
+        </div>
+      </div> <!-- close class="content" -->
+    </div> <!-- close class="main-column" -->
+  </body>
+</html>

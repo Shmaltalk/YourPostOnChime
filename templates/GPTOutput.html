@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../static/styles/styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400&display=swap" /> 
+    <link rel='icon' href='favicon.png' type='image/x-icon'/>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Talie Massachi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourPostOnChime</title>
+  </head>
+  <body>
+    <script>0</script>
+    <div class="main-column">
+      <div class="content">
+        <header class="page-heading">
+          <h1 class="title">
+            Your Post On Chime
+          </h1>
+        </header>
+        
+        <div class="output-post">
+          <div class="tweet">
+            <h2>Your Tweet</h2>
+            {{tweet_embed | safe}}
+          </div>
+          <div class="gpt-output">
+            <h2>Your tweet in emojis</h2>
+            <p id="emojis">{{GPT_output}}</p>
+          </div>
+        </div>
+
+        <div class="tweet-info">
+          <h2>
+            Data Sent to GPT
+          </h2>
+
+          <h3>Tweet text</h3>
+          {{tweet_text}}
+
+          <form action="/send_to_GPT" id="descrip-form" method="get">
+            <label for="GPT_data"><h3>Media description:</h3></label>
+            <span><em>Feel free to edit! This currently shows the media alt-text by default.</em></span>
+            <textarea name="media_descrip" form="descrip-form">{{media_descrip}}</textarea> <br>
+            <input type="hidden" name="tweet_link" value="{{tweet_link}}">
+            <input type="hidden" name="tweet_text" value="{{tweet_text}}">
+            <input type="submit" value="Resubmit to ChatGPT">
+          </form>
+
+          <form action="/">
+            <input type="submit" value="Try again with a different tweet">
+          </form>
+        </div>
+
+
+        <div class="bottom-bar">
+
+        </div>
+      </div> <!-- close class="content" -->
+    </div> <!-- close class="main-column" -->
+  </body>
+</html>
