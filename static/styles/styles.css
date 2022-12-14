@@ -37,9 +37,20 @@ body {
   margin: 0px;
 }
 
+.button_t {
+  border: none;
+  outline: none;
+  padding: 5px;
+  margin: 8px 0px;
+}
+
 
 
 /* Unique styles */
+.get-tweet {
+  margin-top: 10px;
+}
+
 .tweet-imgs {
   display: flex;
   flex-wrap: wrap;
@@ -53,6 +64,19 @@ body {
 
 input[type="text"] {
   width: 100%;
+}
+
+.button_t {
+  width: 15em;
+  height: 3em;
+  background-color: #FFEFE8;
+  color: black;
+  border: 2px solid black;
+}
+
+.button_t:hover {
+  background-color: black;
+  color: #FFEFE8;
 }
 
 textarea {
@@ -80,7 +104,6 @@ textarea {
 }
 
 
-
 @media (max-width: 600px) {
   .output-post {
     flex-direction: column-reverse;
@@ -93,5 +116,6 @@ textarea {
   #emojis {
     font-size: 2em;
   }
+
   
 }

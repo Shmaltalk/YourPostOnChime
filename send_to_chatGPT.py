@@ -26,7 +26,7 @@ def generate_prompt(tweet_text, media_descrip):
     In another example:
     The text of the post reads...
     I got 2nd place in the @LimitlessTCG tour! Thank you to all my opponents and to @BillaVGC for hosting! Paste: https://t.co/5P72ulEh7y https://t.co/xstGVfVcGc
-    There is also an image with the description, A team code from Pokemon Scarlet and Violet. The pokemon listed are Dondozo, Tatsugiri, Armarouge, Sylveon, Hydreigon, and Meowscarada. 
+    There is also an image with the description, A team code from Pokemon Scarlet and Violet.
 
     Response:
     😄 ⛔️🥈🎉🙏🙏
@@ -48,7 +48,7 @@ def generate_prompt(tweet_text, media_descrip):
 
 def get_response(tweet_text, media_descrip):
   return openai.Completion.create(
-    model="text-davinci-002",
+    model="text-davinci-003",
     prompt=generate_prompt(tweet_text, media_descrip),
     temperature=0.6,
   )

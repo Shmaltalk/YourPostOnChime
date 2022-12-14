@@ -1,5 +1,6 @@
 import os
 import requests
+from functools import lru_cache
 
 API_TOKEN_TWITTER = os.environ['API_TOKEN_TWITTER']
 
@@ -43,13 +44,13 @@ def connect_to_endpoint(url):
         )
     return response.json()
 
+@lru_cache(maxsize=8000)
 def get_tweet_data(tweet_id):
     url = create_url(tweet_id)
     json_response = connect_to_endpoint(url)
-    # print(json.dumps(json_response, indent=4, sort_keys=True))
     return(json_response)
 
-
+@lru_cache(maxsize=8000)
 def get_tweet_embed(tweet_link):
     r = requests.get('https://publish.twitter.com/oembed?url={}&hide_thread=true'.format(tweet_link))
     return(r.json()["html"])
