@@ -16,21 +16,24 @@
       <div class="content">
         <header class="page-heading">
           <h1 class="title">
-            Your Post On Chime
+            <a href="/">Your Post On Chime</a>
           </h1>
         </header>
 
         <div>
-          <h2><em>What would this tweet look like in emojis?</em></h2>
-          A question we have all asked ourselves. Well now you can find out! Enter a link to a tweet; 
-          confirm or add a description for any images, videos, or gifs in the tweet; and send it along 
-          to GPT for translation into emoijs.
+          <h2><em>What would this message look like in emojis?</em></h2>
+          A question we have all asked ourselves. Well now you can find out! Enter a tweet or some text and send it along 
+          to GPT for translation into (up to 6) emojis.
         </div>
 
         <div class="get-tweet">
           <form action="/emoji_result" method="get">
             <label for="tweet_link">Link to tweet:</label><br>
             <input type="text" id="tweet_link" name="tweet_link" value={{tweet_link}}><br>
+            <br>
+            <label for="message_text">Or give us some text:</label><br>
+            <textarea name="message_text" maxlength="300"></textarea> <br>
+
             <div class="button_container">
               <input class="button_t" type="submit" value="Emojify!">
             </div>

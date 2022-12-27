@@ -35,6 +35,12 @@ body {
   color: rgb(44, 44, 43);
   font-weight: 200;
   margin: 0px;
+  
+}
+
+.title > a {
+  color: rgb(44, 44, 43);
+  text-decoration: none;
 }
 
 .button_t {
@@ -98,6 +104,11 @@ textarea {
 
 .tweet {
   width: 50%;
+}
+
+#message-text {
+  font-size: 2.5em;
+  font-weight: 200;
 }
 
 #emojis {

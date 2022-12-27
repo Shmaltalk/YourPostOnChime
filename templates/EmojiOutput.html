@@ -17,17 +17,17 @@
       <div class="content">
         <header class="page-heading">
           <h1 class="title">
-            Your Post On Chime
+            <a href="/">Your Post On Chime</a>
           </h1>
         </header>
         
         <div class="output-post">
           <div class="tweet">
-            <h2>Your Tweet</h2>
-            {{tweet_embed | safe}}
+            <h2>Your post</h2>
+            <p id="message-text">{{tweet_embed | safe}}</p>
           </div>
           <div class="gpt-output">
-            <h2>Your tweet in emojis</h2>
+            <h2>Your post in emojis</h2>
             <p id="emojis">{{emoji_string}}</p>
 
             <div>
@@ -38,9 +38,13 @@
             <form action="/emoji_result" id="resubmit-form" method="get">
               <h2>Don't like your result?</h2>
               <input type="hidden" name="tweet_link" value="{{tweet_link}}">
-              <input type="hidden" name="tweet_link" value="{{tweet_link}}">
+              <input type="hidden" name="message_text" value="{{message_text}}">
               <input type="hidden" name="media_descrip" value="{{media_descrip}}">
-              <input class="button_t" type="submit" value="Try again!">
+              <input class="button_t" type="submit" value="Resubmit your post">
+            </form>
+
+            <form action="/">
+              <input class="button_t" type="submit" value="Start over with new data">
             </form>
 
           </div>
@@ -50,22 +54,20 @@
 
         <div class="tweet-info">
           <h2>
-            Or... change the data we used to generate this tweet:
+            Or... change the data we used to generate these emojis:
           </h2>
 
-          <h3>Tweet text</h3>
-          {{tweet_text}}
-
           <form action="/emoji_result" id="new-descrip-form" method="get">
-            <label for="GPT_data"><h3>Media description:</h3></label>
-            <textarea name="media_descrip" maxlength="500" form="descrip-form">{{media_descrip}}</textarea> <br>
+            <label for="message_text"><h3>Post Text:</h3></label>
+            <textarea name="message_text" maxlength="300" {% if disable_edit %} disabled {% endif %} >{{message_text}}{{tweet_text}}</textarea> <br>
+            <label for="media_descrip"><h3>Media description:</h3></label>
+            <textarea name="media_descrip" maxlength="300">{{media_descrip}}</textarea> <br>
             <input type="hidden" name="tweet_link" value="{{tweet_link}}">
-            <input type="hidden" name="tweet_text" value="{{tweet_text}}">
             <input class="button_t" type="submit" value="Resubmit with new data">
           </form>
 
           <form action="/">
-            <input class="button_t" type="submit" value="Start over with new tweet">
+            <input class="button_t" type="submit" value="Start over with new data">
           </form>
         </div>
 
