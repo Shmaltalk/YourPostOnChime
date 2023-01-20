@@ -2,11 +2,10 @@ import os
 from flask import Flask, render_template, request, redirect, url_for
 from get_tweet_data import get_tweet_data, get_tweet_embed
 from send_to_chatGPT import get_response
-from get_img_descrip import get_img_descrip
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/') 
 def index():
   return render_template('index.html')
 
@@ -76,8 +75,6 @@ def text_case(message_text, emoji_string, media_descrip):
   else:
     GPT_output = get_response(message_text, media_descrip=media_descrip)["choices"][0]["text"]
     return redirect(url_for('emoji_result')+"?message_text={}&emoji_string={}&media_descrip={}".format(message_text, GPT_output, media_descrip)) 
-
-
 
 
 if __name__ == '__main__':
