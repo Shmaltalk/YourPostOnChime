@@ -9,7 +9,8 @@ The website is hosted on Google Cloud Run. To update, run `gcloud run deploy`
 
 
 ## Local Deployment
-
+First set up environment variables using `export VARIABLE=<variable>`
+- you will need API_TOKEN_TWITTER and API_KEY_CHATGPT
 This app runs on flask. To test locally run `flask --app server --debug run`
 
 
