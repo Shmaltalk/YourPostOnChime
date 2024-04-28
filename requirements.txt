@@ -9,7 +9,7 @@ itsdangerous==2.1.2
 Jinja2==3.1.2
 MarkupSafe==2.1.1
 numpy==1.23.5
-openai==0.25.0
+openai==1.23.6
 openpyxl==3.0.10
 pandas==1.5.2
 pandas-stubs==1.5.2.221124
@@ -25,3 +25,5 @@ urllib3==1.26.13
 Werkzeug==2.2.2
 zipp==3.11.0
 waitress==2.1
+# azure-cognitiveservices-vision-computervision==0.9.0
+# Pillow==9.3.0

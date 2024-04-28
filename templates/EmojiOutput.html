@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="../static/styles/styles.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400&display=swap" /> 
-    <link rel='icon' href='favicon.png' type='image/x-icon'/>
+    <link rel='icon' href='static/images/favicon.png' type='image/x-icon'/>
     <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
     <meta charset="utf-8"/>
     <meta name="author" content="Talie Massachi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YourPostOnChime</title>
+    <title>YourPostOnChirpResults</title>
   </head>
 
     <!-- Google tag (gtag.js) -->
@@ -28,27 +28,28 @@
       <div class="content">
         <header class="page-heading">
           <h1 class="title">
-            <a href="/">Your Post On Chime</a>
+            <a href="/">Your Post On Chirp</a>
           </h1>
         </header>
         
         <div class="output-post">
-          <div class="tweet">
+          <div class="toot">
             <h2>Your post</h2>
-            <p id="message-text">{{tweet_embed | safe}}</p>
+            <p id="message-text">{{toot_embed | safe}}</p>
           </div>
           <div class="gpt-output">
             <h2>Your post in emojis</h2>
             <p id="emojis">{{emoji_string}}</p>
 
             <div>
-              <h2>Post this to Twitter</h2>
+              <h2>Share your post!</h2>
               <a class="button_t" href="https://twitter.com/intent/tweet?text={{emoji_string}}%0Avia%20%40YourPostOnChime&url={{tweet_link}}">Tweet it!</a>
+              <!-- <button class="button_t">Toot it!</button> -->
             </div>
 
             <form action="/emoji_result" id="resubmit-form" method="get">
               <h2>Don't like your result?</h2>
-              <input type="hidden" name="tweet_link" value="{{tweet_link}}">
+              <input type="hidden" name="toot_link" value="{{toot_link}}">
               <input type="hidden" name="message_text" value="{{message_text}}">
               <input type="hidden" name="media_descrip" value="{{media_descrip}}">
               <input class="button_t" type="submit" value="Emojify your post again">
@@ -63,17 +64,17 @@
 
 
 
-        <div class="tweet-info">
+        <div class="toot-info">
           <h2>
             Or... change the data we used to generate these emojis:
           </h2>
 
           <form action="/emoji_result" id="new-descrip-form" method="get">
             <label for="message_text"><h3>Post Text:</h3></label>
-            <textarea name="message_text" maxlength="300" {% if disable_edit %} disabled {% endif %} >{{message_text}}{{tweet_text}}</textarea> <br>
+            <textarea name="message_text" maxlength="300" {% if disable_edit %} disabled {% endif %} >{{message_text}}{{toot_text}}</textarea> <br>
             <label for="media_descrip"><h3>Media description:</h3></label>
             <textarea name="media_descrip" maxlength="300">{{media_descrip}}</textarea> <br>
-            <input type="hidden" name="tweet_link" value="{{tweet_link}}">
+            <input type="hidden" name="toot_link" value="{{toot_link}}">
             <input class="button_t" type="submit" value="Submit with updated data">
           </form>
 
@@ -84,7 +85,7 @@
 
 
         <div class="bottom-bar">
-          Want to see more emojis? Try Chime
+          Want to see more emojis? Try Chirp
           <div class="chime-links">
             <a class="download" href='https://apps.apple.com/us/app/chime-social-mood-tracker/id1556182825'><img alt='Get it on the App Store' src='../static/images/app_store.svg'/></a>
             <a class="download" href='https://play.google.com/store/apps/details?id=com.brown.chime&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='../static/images/google_play.svg'/></a>

@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
-from get_tweet_data import get_tweet_data, get_tweet_embed
+from get_toot_data import get_toot_data, get_toot_embed
 from send_to_chatGPT import get_response
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ def index():
 def emoji_result():
 
   # arguments
-  tweet_link = request.args.get('tweet_link')
+  toot_link = request.args.get('toot_link')
   message_text = request.args.get('message_text')
   emoji_string = request.args.get('emoji_string')
   media_descrip = request.args.get('media_descrip')
@@ -21,59 +21,67 @@ def emoji_result():
   if (not media_descrip):
     media_descrip = ""
 
-  if(tweet_link):
-    print("tweet")
-    return tweet_case(tweet_link, emoji_string, media_descrip)
+  if(toot_link):
+    print("toot")
+    return toot_case(toot_link, emoji_string, media_descrip)
   elif(message_text):
     return text_case(message_text, emoji_string, media_descrip)
   else:
-    return "Please provide either a tweet or some text to emojify"
+    return "Please provide either a toot or some text to emojify"
 
-# when user inputs tweet
-def tweet_case(tweet_link, emoji_string, media_descrip):
+# when user inputs toot
+def toot_case(toot_link, emoji_string, media_descrip):
 
-  # get just tweet id
-  tweet_id = tweet_link.split("/")[-1] # gets just the id and params
-  tweet_id = tweet_id.split("?")[0] # removes params
+  # get toot server
+  toot_server=toot_link.split("/")[-3]
 
-  # get json of tweet data from twitter API
+  # get just toot id
+  toot_id = toot_link.split("/")[-1] # gets just the id and params
+  toot_id = toot_id.split("?")[0] # removes params
+
+  print("toot id:", toot_id)
+
+  # get json of toot data from twitter API
   try:
-    tweet_data = get_tweet_data(tweet_id)
-  except:
-    return "Please provide a valid tweet (or link to tweet)"
+    toot_data = get_toot_data(toot_server, toot_id)
+  except Exception as e:
+    print(e)
+    return "Please provide a valid toot (or link to toot)"
 
 
-  tweet_text = tweet_data["data"][0]["text"]
+  toot_text = toot_data["content"]
+  toot_media=toot_data["media_attachments"]
   
   # create media description from alt text
   try:
-    for img in tweet_data["includes"]["media"]:
-      media_descrip += img["alt_text"] + " "
+    if toot_media and not media_descrip:
+      for img in toot_media:
+        media_descrip += img["description"] + " "
   except:
     print("error in alt-text")
   
-  # # generate a media description if we need one
-  # if ((media_descrip) and tweet_data["includes"]["media"][0]["url"]):
-  #   media_descrip = get_img_descrip(tweet_data["includes"]["media"][0]["url"])
+  # generate a media description if we need one
+  # if ((media_descrip) and toot_data["includes"]["media"][0]["url"]):
+  #   media_descrip = get_img_descrip(toot_data["includes"]["media"][0]["url"])
   #   return media_descrip
 
   if (emoji_string):
-    tweet_embed = get_tweet_embed(tweet_link)
-    return render_template('EmojiOutput.html', tweet_link=tweet_link, tweet_text=tweet_text, media_descrip=media_descrip, emoji_string=emoji_string, tweet_embed=tweet_embed, disable_edit=True)
+    toot_embed = get_toot_embed(toot_link)
+    return render_template('EmojiOutput.html', toot_link=toot_link, toot_text=toot_text, media_descrip=media_descrip, emoji_string=emoji_string, toot_embed=toot_embed, disable_edit=True)
  
   else:
-    GPT_output = get_response(tweet_text, media_descrip)["choices"][0]["text"]
-    return redirect(url_for('emoji_result')+"?tweet_link={}&emoji_string={}&media_descrip={}".format(tweet_link, GPT_output, media_descrip))
+    GPT_output = get_response(toot_text, media_descrip)
+    return redirect(url_for('emoji_result')+"?toot_link={}&emoji_string={}&media_descrip={}".format(toot_link, GPT_output, media_descrip))
 
-# when the user inputs text and no tweet link
+# when the user inputs text and no toot link
 def text_case(message_text, emoji_string, media_descrip):
   # return message text in quotes
-  tweet_embed = "\"{}\"".format(message_text)
+  toot_embed = '<div class="text-embed">"{}"</div>'.format(message_text)
 
   if (emoji_string):
-    return render_template('EmojiOutput.html', message_text=message_text, media_descrip=media_descrip, emoji_string=emoji_string, tweet_embed=tweet_embed, disable_edit=False)
+    return render_template('EmojiOutput.html', message_text=message_text, media_descrip=media_descrip, emoji_string=emoji_string, toot_embed=toot_embed, disable_edit=False)
   else:
-    GPT_output = get_response(message_text, media_descrip=media_descrip)["choices"][0]["text"]
+    GPT_output = get_response(message_text, media_descrip=media_descrip)
     return redirect(url_for('emoji_result')+"?message_text={}&emoji_string={}&media_descrip={}".format(message_text, GPT_output, media_descrip)) 
 
 

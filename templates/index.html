@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="../static/styles/styles.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400&display=swap" /> 
-    <link rel='icon' href='favicon.png' type='image/x-icon'/>
+    <link rel='icon' href='static/images/favicon.png' type='image/x-icon'/>
     <meta charset="utf-8"/>
     <meta name="author" content="Talie Massachi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YourPostOnChime</title>
+    <title>YourPostOnChirp</title>
   </head>
 
   <!-- Google tag (gtag.js) -->
@@ -27,7 +27,7 @@
       <div class="content">
         <header class="page-heading">
           <h1 class="title">
-            <a href="/">Your Post On Chime</a>
+            <a href="/">Your Post On Chirp</a>
           </h1>
         </header>
 
@@ -38,19 +38,21 @@
         </div>
 
         <div>
-          <a href="https://chime.talie.town/emoji_result?tweet_link=https://twitter.com/talietown/status/1625149491421626373?s=20&emoji_string=%20%F0%9F%98%8A%20%F0%9F%8D%8E%F0%9F%A5%9E%F0%9F%94%A5&media_descrip=A%20very%20fluffy%20German%20pancake%20with%20baked-in%20apple%20slices,%20sitting%20in%20a%2012%20inch%20skillet%20on%20a%20stove.%20A%20very%20fluffy%20German%20pancake%20with%20baked-in%20apple%20slices,%20sitting%20in%20a%2012%20inch%20skillet%20on%20a%20stove.%20A%20very%20fluffy%20German%20pancake%20with%20baked-in%20apple%20slices,%20sitting%20in%20a%2012%20inch%20skillet%20on%20a%20stove.%20A%20very%20fluffy%20German%20pancake%20with%20baked-in%20apple%20slices,%20sitting%20in%20a%2012%20inch%20skillet%20on%20a%20stove.%20A%20very%20fluffy%20German%20pancake%20with%20baked-in%20apple%20slices,%20sitting%20in%20a%2012%20inch%20skillet%20on%20a%20stove.%20A%20very%20fluffy%20German%20pancake%20with%20baked-in%20apple%20slices,%20sitting%20in%20a%2012%20inch%20skillet%20on%20a%20stove.%20A%20very%20fluffy%20German%20pancake%20with%20baked-in%20apple%20slices,%20sitting%20in%20a%2012%20inch%20skillet%20on%20a%20stove.%20">See</a> 
-          <a href="https://chime.talie.town/emoji_result?tweet_link=https://twitter.com/RyanMarcus/status/1578994210711404545?s=20&t=vI71ZdINNgxoqPMjel_Ajg&emoji_string=%0A%20%20%F0%9F%99%82%20%F0%9F%93%88%F0%9F%A4%96%F0%9F%92%BB%F0%9F%92%AD">some</a> 
-          <a href="https://chime.talie.town/emoji_result?message_text=I%20can%20buy%20myself%20flowers%0D%0AWrite%20my%20name%20in%20the%20sand%0D%0ATalk%20to%20myself%20for%20hours%0D%0ASay%20things%20you%20don%27t%20understand%0D%0AI%20can%20take%20myself%20dancing%0D%0AAnd%20I%20can%20hold%20my%20own%20hand%0D%0AYeah,%20I%20can%20love%20me%20better%20than%20you%20can&emoji_string=%20%F0%9F%98%8A%20%F0%9F%92%90%E2%9C%8D%EF%B8%8F%F0%9F%92%83%F0%9F%91%A9%E2%80%8D&media_descrip=">examples.</a>
+          <a href="https://chime.talie.town/emoji_result?toot_link=https://mastodon.social/@neilhimself/109294849537285539&emoji_string=😄🟢💫🔮&media_descrip=">See</a> 
+          <a href="https://chime.talie.town/emoji_result?toot_link=https://discuss.systems/@ryanmarcus/111960179263529720&emoji_string=😂 ⛔%EF%B8%8F🏠🐦🐦🐦&media_descrip=Four birds sitting in and on a bird feeder that is far too small for all four birds.%20">some</a> 
+          <a href="https://chime.talie.town/emoji_result?message_text=I can buy myself flowers%0D%0AWrite my name in the sand%0D%0ATalk to myself for hours%0D%0ASay things you don't understand%0D%0AI can take myself dancing%0D%0AAnd I can hold my own hand%0D%0AYeah, I can love me better than you can&emoji_string=😊💐💬💃🤝❤%EF%B8%8F&media_descrip=">examples.</a>
         </div>
 
-        <div class="get-tweet">
+        <div class="get-post">
           <form action="/emoji_result" method="get">
             <label for="message_text">Your message here:</label><br>
             <textarea name="message_text" maxlength="300"></textarea> <br>
             <br>
-            <label for="tweet_link">Or a link to a tweet:</label><br>
-            <input type="text" id="tweet_link" name="tweet_link" value={{tweet_link}}><br>
-
+            <label for="mastodon_link">Or a link to a Mastodon Post:</label><br>
+            <input type="text" id="toot_link" name="toot_link" value={{toot_link}}><br>
+            <br>
+            <span>Note: due to updates to X's (formerly Twitter) API, we can no longer support Tweets.</span>
+            <br>
             <div class="button_container">
               <input class="button_t" type="submit" value="Emojify!">
             </div>
@@ -68,7 +70,7 @@
 
 
         <div class="bottom-bar">
-          Emojis, a daily journal, and a social space all in one: try Chime
+          Emojis, a daily journal, and a social space all in one: try Chirp
           <div class="chime-links">
             <a class="download" href='https://apps.apple.com/us/app/chime-social-mood-tracker/id1556182825'><img alt='Get it on the App Store' src='../static/images/app_store.svg'/></a>
             <a class="download" href='https://play.google.com/store/apps/details?id=com.brown.chime&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='../static/images/google_play.svg'/></a>

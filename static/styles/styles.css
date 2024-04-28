@@ -53,18 +53,18 @@ body {
 
 
 /* Unique styles */
-.get-tweet {
+.get-post {
   margin-top: 10px;
 }
 
-.tweet-imgs {
+.toot-imgs {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 10px;
 }
 
-.tweet-media {
+.toot-media {
   width: 45%;
 }
 
@@ -102,13 +102,24 @@ textarea {
   justify-content: space-between;
 }
 
-.tweet {
-  width: 50%;
+.toot {
+  width: 45%;
+}
+
+.text-embed {
+  border: solid #bfbfbf;
+  color: white;
+  background: #313543;
+  min-height: 150px;
+  padding: 1em 1.5em;
+  text-align: left;
+  white-space: pre-line;
 }
 
 #message-text {
-  font-size: 2.5em;
+  font-size: 2em;
   font-weight: 200;
+  display: flex;
 }
 
 #emojis {
@@ -132,12 +143,12 @@ textarea {
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .output-post {
     flex-direction: column-reverse;
   }
   
-  .tweet {
+  .toot {
     width: 100%;
   }
 
